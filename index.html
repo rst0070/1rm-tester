@@ -56,7 +56,7 @@
             var rm1 = weights*((coefficient[exercise])[reps]);
             var data = [];
             for(let i=1; i < 11 ; i++){
-                data[i] = rm1/coefficient[exercise][i];
+                data[i] = (rm1/coefficient[exercise][i]).toFixed(2);
             }
             return data;
             
@@ -69,13 +69,16 @@
             "</div>");
         }
         function action(){
-            const exercise = $('input[name=exercise]').val();
-            const reps = parseInt($('input[name=reps]').val());
+            const exercise = $('select[name=exercise]').val();
+            const reps = parseInt($('select[name=reps]').val());
             const weights = parseFloat($('input[name=weights]').val());
             if(!exercise || !reps || ! weights){
                 alert("모든 항목을 정확히 입력해주세요");
                 return;
             }
+            
+            if(weights < 0){alert("무게는 양수만 가능합니다."); return;}
+            
             $('.result-element').remove();
             
             var list = calculate(exercise, reps, weights);
@@ -90,25 +93,25 @@
 <body>
     <h1>NSCA 1RM 계산기</h1>
     <div class="input_board">
-        <input name="exercise" placeholder="종목선택" list="selector_exercises"/>
-        <datalist id="selector_exercises">
-            <option value="squat"></option>
-            <option value="benchpress"></option>
-            <option value="deadlift"></option>
-        </datalist>
-        <input name="reps" placeholder="반복횟수" list="selector_reps"/>
-        <datalist id="selector_reps">
-            <option value="1"></option>
-            <option value="2"></option>
-            <option value="3"></option>
-            <option value="4"></option>
-            <option value="5"></option>
-            <option value="6"></option>
-            <option value="7"></option>
-            <option value="8"></option>
-            <option value="9"></option>
-            <option value="10"></option>
-        </datalist>
+        <select name="exercise">
+            <option value="" selected="selected">종목선택</option>
+            <option value="squat">스쿼트</option>
+            <option value="benchpress">벤치프래스</option>
+            <option value="deadlift">데드리프트</option>
+        </select>
+        <select name="reps">
+            <option value="" selected="selected">반복횟수(10회이하)</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+        </select>
         <input name="weights" placeholder="무게(kg)" type="number"/>
         <button onClick="action()">계산하기</button>
     </div>
