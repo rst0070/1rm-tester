@@ -1,0 +1,1 @@
+Sitemap: http://rst0070.github.io/1rm-tester/sitemap.xml
