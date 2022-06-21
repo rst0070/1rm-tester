@@ -9,8 +9,13 @@
         body{
             display: flex;
             flex-direction:column;
+            font-size: medium;
         }
         h1{
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .desc {
             margin-left: auto;
             margin-right: auto;
         }
@@ -19,9 +24,23 @@
             margin-right: auto;
             margin-bottom: 15px;
         }
-        .input_board button{
+        .input_board select, input, button {
+            display: block;
             margin-left: auto;
             margin-right: auto;
+            margin-top: 20px;
+        }
+        .input_board select {
+            height: 30px;
+            width: 300px;
+        }
+        .input_board input {
+            height: 25px;
+            width: 295px;
+        }
+        .input_board button {
+            height: 30px;
+            width: 100px;
         }
         
         #list {
@@ -96,7 +115,7 @@
 </head>
 <body>
     <h1>NSCA 1RM 계산기</h1>
-		<p>수행한 종목과 반복횟수, 무게를 입력하면 1RM부터 10RM까지 계산합니다.</p>
+	<p class="desc">수행한 종목과 반복횟수, 무게를 입력하면 1RM부터 10RM까지 계산합니다.</p>
     <div class="input_board">
         <select name="exercise">
             <option value="" selected="selected">종목선택</option>
